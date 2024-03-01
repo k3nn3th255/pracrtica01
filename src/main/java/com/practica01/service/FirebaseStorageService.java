@@ -8,7 +8,7 @@ public interface FirebaseStorageService {
     public String cargaImagen(MultipartFile archivoLocalCliente, String carpeta, Long id);
 
     //El BuketName es el <id_del_proyecto> + ".appspot.com"
-    final String BucketName = "practica01-a74c0.appspot.com";
+    final String BucketName = "practica01-cca2d.appspot.com";
 
     //Esta es la ruta básica de este proyecto practica01
     final String rutaSuperiorStorage = "Practica01";

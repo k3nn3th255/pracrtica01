@@ -14,7 +14,7 @@
     <name>practica01</name>
     <description>practica grupal</description>
     <properties>
-        <java.version>21</java.version>
+        <java.version>20</java.version>
     </properties>
     <dependencies>
         <dependency>

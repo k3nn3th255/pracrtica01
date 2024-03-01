@@ -14,7 +14,7 @@
     </head>
     <body>
         <header th:fragment="header" class="header">
-            <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+            <nav class="navbar navbar-expand-sm navbar-da bg-red p-0">
                 <div class="container">
                     <a th:href="@{/}" class="navbar-brand">[[#{aplicacion.titulo}]]</a>
                     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -22,7 +22,7 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <ul class="navbar-nav">
-                            <li class="nav-item px-2"><a class="nav-link" th:href="@{/categoria/listado}">[[#{plantilla.categorias}]]</a></li>
+                            <li class="nav-item px-2"><a class="nav-link" th:href="@{/arbol/listado}">[[#{plantilla.categorias}]]</a></li>
                             <li class="nav-item px-2"><a class="nav-link" th:href="@{/producto/listado}">[[#{plantilla.productos}]]</a></li>                           
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" 
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </nav>
-            <section id="main-header" class="py-2 bg-success text-white">
+            <section id="main-header" class="py-2 bg-white text-primary">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
@@ -59,7 +59,7 @@
                 </div>
             </section>
         </header> 
-        <footer th:fragment="footer" class="bg-info text-white mt-5 p-2 lead text-center">
+        <footer th:fragment="footer" class="bg-blue text-white mt-5 p-2 lead text-center">
             &COPY; [[#{plantilla.derechos}]]
         </footer>
     </body>
