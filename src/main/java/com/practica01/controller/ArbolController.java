@@ -1,9 +1,9 @@
-
 package com.practica01.controller;
 
 import com.practica01.domain.Arbol;
 import com.practica01.service.ArbolService;
 import com.practica01.service.FirebaseStorageService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +25,7 @@ public class ArbolController {
         var lista = arbolService.getArbols(false);
 
         model.addAttribute("arbols", lista);
-        model.addAttribute("total arbols ", lista.size());
+        model.addAttribute("totalarbols ", lista.size());
         return "/Arbol/listado";
     }
 
@@ -34,28 +34,32 @@ public class ArbolController {
 
     @PostMapping("/guardar")
     public String guardar(Arbol arbol,
-            @RequestParam("imagenFile") MultipartFile imagenFile) {
+            @RequestParam("imagenFile") MultipartFile imagenFile, Model model) {
 
         if (!imagenFile.isEmpty()) {
+            String ruta = null;
+            if (arbol.getIdArbol() != null) {
+                ruta = firebaseStorageService.cargaImagen(imagenFile, "arbol", arbol.getIdArbol().longValue());
+            }
+            arbol.setRutaImagen(ruta);
             arbolService.save(arbol);
-            firebaseStorageService.cargaImagen(imagenFile, "arbol", arbol.getIdArbol());
         }
         arbolService.save(arbol);
-
         return "redirect:/arbol/listado";
     }
 
     @GetMapping("/modificar/{idArbol}")
     public String modifica(Arbol arbol,
             Model model) {
-        arbol=arbolService.getArbol(arbol);
-        model.addAttribute("arbol",arbol);
+        arbol = arbolService.getArbol(arbol);
+        model.addAttribute("arbol", arbol);
         return "Arbol/modifica";
     }
+
     @GetMapping("/eliminar/{idArbol}")
     public String elimina(Arbol arbol) {
         arbolService.delete(arbol);
-        
-        return"redirect:/arbol/listado";
+
+        return "redirect:/arbol/listado";
     }
 }
